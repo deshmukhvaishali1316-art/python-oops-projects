@@ -8,42 +8,42 @@ class BankAccount(MobileSMS): # Inheritance - Bank ko SMS ka power diya
     def __init__(self, name, balance=0):
         self.name = name
         self.balance = balance
-        print(f"Account khula: {name} ke liye")
+        print(f"Account Open: {name}")
 
     def deposit(self, amount):
         self.balance += amount
-        self.send_sms(f"Rs.{amount} jama hue. Total Balance: Rs.{self.balance}")
+        self.send_sms(f"Rs.{amount} Deposited Successfully . Total Balance: Rs.{self.balance}")
 
     def withdraw(self, amount):
         if amount > self.balance:
-            self.send_sms(f"Paise nahi hai! Balance sirf Rs.{self.balance} hai")
+            self.send_sms(f"There is No Money in Your Accont! Your Bank Balance Only Rs.{self.balance} hai")
         else:
             self.balance -= amount
-            self.send_sms(f"Rs.{amount} nikale gaye. Bacha Balance: Rs.{self.balance}")
+            self.send_sms(f"Rs.{amount} Withdraw Successfully. Bank Balance: Rs.{self.balance}")
 
     def show_balance(self):
         print(f"Current Balance: Rs.{self.balance}")
 
-# --- Yaha se code लगातार chalega ---
+# --- code start
 print("--- Smart Bank Start ---")
 user = BankAccount("Vaishali", 1000)
 
 while True:
-    print("\n1. Paise Dalna (Deposit)")
-    print("2. Paise Nikalna (Withdraw)")
-    print("3. Balance Dekhna")
-    print("4. Band Karo")
+    print("\n1.Deposit Cash")
+    print("2. Withdraw Cash")
+    print("3. Check Bank Balance ")
+    print("4. Close Account")
     
-    choice = input("Kya karna hai (1-4): ")
+    choice = input(" Choise Your Action (1-4): ")
 
     if choice == '1':
-        amt = int(input("Kitne dalne hai? "))
+        amt = int(input("Deposite Amount? "))
         user.deposit(amt)
     elif choice == '2':
-        amt = int(input("Kitne nikalne hai? "))
+        amt = int(input("Withdraw amount? "))
         user.withdraw(amt)
     elif choice == '3':
         user.show_balance()
     elif choice == '4':
-        print("Bank Band. Bye!")
+        print("Bank account close permanantly , thank you ")
         break
